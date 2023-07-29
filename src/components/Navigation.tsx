@@ -49,7 +49,7 @@ const Navigation = () => {
               textDecoration: 'none',
             }}
           >
-            GOTO Anime
+            GoTo Anime
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -105,7 +105,7 @@ const Navigation = () => {
               textDecoration: 'none',
             }}
           >
-            GOTO Anime
+            GoTo Anime
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
