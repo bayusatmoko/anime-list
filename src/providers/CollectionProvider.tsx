@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Collection, CollectionContext } from "../contexts/CollectionContext"
+import AnimeDetail from "@src/components/AnimeDetail"
 
 const getInitialState = ():Collection[] => {
     const collections = localStorage.getItem('collections')
@@ -17,21 +18,16 @@ export const CollectionProvider = (props: CollectionProviderProps) => {
       localStorage.setItem('collections', JSON.stringify(collections))
     }, [collections])
 
-    const addToCollection = (id: number, collectionName: string): string => {
+    // const addToCollection = (id: number, collectionName: string): string => {
+    const addToCollection = (animeDetail: AnimeDetail, collectionName: string): string => {
         const collectionIndex = collections.findIndex((collection) => collection.name === collectionName)
         if(collectionIndex < 0) {
-            // const newCollections = [...collections, {
-            //     name: collectionName,
-            //     animes: [id]
-            // }]
-            // setCollections(newCollections)
-            // return `Anime successfully added to ${collectionName} collection` 
             return `${collectionName} collection does not exists` 
         }
-        const isAlreadyAdded = collections[collectionIndex].animes.find((anime) => anime === id)
+        const isAlreadyAdded = collections[collectionIndex].animes.find((anime) => anime.id === animeDetail.id)
         if(isAlreadyAdded) return `Anime already exists in ${collectionName} collection`
         const newCollections = [...collections]
-        newCollections[collectionIndex].animes.push(id)
+        newCollections[collectionIndex].animes.push(animeDetail)
         setCollections(newCollections)
         return `Anime successfully added to ${collectionName} collection`
     }
@@ -48,8 +44,19 @@ export const CollectionProvider = (props: CollectionProviderProps) => {
         return `${collectionName} collection succesfully added` 
     }
 
+    const deleteCollection = (collectionName: string) => {
+        const collectionIndex = collections.findIndex((collection) => collection.name === collectionName)
+        if(collectionIndex < 0) {
+            return `${collectionName} collection does not exists` 
+        }
+        const newCollections = [...collections]
+        newCollections.splice(newCollections.findIndex((col) => col.name === collectionName), 1)
+        setCollections(newCollections)
+        return `${collectionName} collection succesfully removed`
+    }
+
     return (
-        <CollectionContext.Provider value={{collections, addCollection, addToCollection}}>
+        <CollectionContext.Provider value={{collections, addCollection, addToCollection, deleteCollection}}>
             {props.children}
         </CollectionContext.Provider>
     )

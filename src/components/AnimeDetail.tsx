@@ -71,10 +71,10 @@ const AnimeDetail = (props:AnimeDetailProps) => {
     const [newCollectionName, setNewCollectionName] = useState("")
     const [collectionToAdd, setCollectionToAdd] = useState([])
 
-    const onButtonSubmitCollection = (id: number) => {
+    const onButtonSubmitCollection = (animeDetail: AnimeDetail) => {
         let message = ""
         collectionToAdd.forEach((col) => {
-            message += addToCollection(id, col)
+            message += addToCollection(animeDetail, col)
             message += "\n"
         })
         setMessage(message)
@@ -173,7 +173,7 @@ const AnimeDetail = (props:AnimeDetailProps) => {
                                   >
                                     {collection.name}
                                   </Link>
-                                <span>{collection.animes.includes(props.id)? " (Already added)": ""}</span>
+                                <span>{collection.animes.map((anime) => anime.id).includes(props.id)? " (Already added)": ""}</span>
                                 </>
                               )}
                             name={collection.name} 
@@ -187,7 +187,7 @@ const AnimeDetail = (props:AnimeDetailProps) => {
                         </Alert>
                 )}
                 <CardActions>
-                    <Button size='small' onClick={() => onButtonSubmitCollection(data.Media.id)}>Add to collection</Button>
+                    <Button size='small' onClick={() => onButtonSubmitCollection(data.Media)}>Add to collection</Button>
                     <Button size='small' onClick={props.onCloseModal}>Close</Button>
                 </CardActions>
                 </FormControl>
