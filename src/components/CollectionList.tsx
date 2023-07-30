@@ -1,4 +1,4 @@
-import { CollectionContext } from "@src/contexts/CollectionContext";
+import { Collection, CollectionContext } from "@src/contexts/CollectionContext";
 import React, { useContext, useState } from "react";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -12,6 +12,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import CollectionDetail from "./CollectionDetail";
 
 
 const CollectionList = () => {
@@ -19,6 +20,15 @@ const CollectionList = () => {
     const [open, setOpen] = useState(false);
     const [newCollectionName, setNewCollectionName] = useState("")
     const [message, setMessage] = useState("")
+    const [collectionDetail, setCollectionDetail] = useState<Collection>({})
+
+    const handleCollectionDetail = (collection: Collection) => {
+      setCollectionDetail(collection)
+    }
+
+    const handleCloseCollection = () => {
+      setCollectionDetail({})
+    }
 
     const handleClickOpen = () => {
       setOpen(true);
@@ -33,6 +43,9 @@ const CollectionList = () => {
       setOpen(false);
     }
 
+      if(collectionDetail.name) {
+        return <CollectionDetail collection={collectionDetail} handleCloseCollection={handleCloseCollection} />
+      }
         return (
           <div>
                <Dialog open={open} onClose={handleClose}>
@@ -67,7 +80,7 @@ const CollectionList = () => {
               <ImageList sx={{ height: '100%' }}>
                 {collections.map((item) => (
                   <ImageListItem key={item.name}>
-                    <CollectionBanner collection={item}/>
+                    <CollectionBanner collection={item} handleCollectionDetail={handleCollectionDetail} />
                   </ImageListItem>
                 ))}
               </ImageList>

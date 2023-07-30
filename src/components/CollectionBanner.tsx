@@ -4,14 +4,16 @@ import './CollectionBanner.scss'
 import { Collection, CollectionContext } from "@src/contexts/CollectionContext";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton } from "@mui/material";
 import DeleteOutline from "@mui/icons-material/DeleteOutline";
+import ArrowForward from "@mui/icons-material/ArrowForward"
 
 interface CollectionBannerProps {
-    collection: Collection
+    collection: Collection;
+    handleCollectionDetail: (collection: Collection) => void
 }
 
 const CollectionBanner = (props:CollectionBannerProps) => {
     const { deleteCollection } = useContext(CollectionContext)
-    const { collection } = props
+    const { collection, handleCollectionDetail } = props
     const [open, setOpen] = useState(false);
     const [collectionName, setCollectionName] = useState("")
 
@@ -62,13 +64,22 @@ const CollectionBanner = (props:CollectionBannerProps) => {
                     title={collection.name}
                     sx={{height: '40%'}}
                     actionIcon={
-                        <IconButton
-                          sx={{ color: 'rgba(255, 255, 255, 0.54)'}}
-                          aria-label={`info about ${collection.name}`}
-                          onClick={() => handleClickOpen(collection.name)}
-                        >
-                          <DeleteOutline />
-                        </IconButton>
+                        <>
+                            <IconButton
+                            sx={{ color: 'rgba(255, 255, 255, 0.54)'}}
+                            aria-label={`info about ${collection.name}`}
+                            onClick={() => handleClickOpen(collection.name)}
+                            >
+                            <DeleteOutline />
+                            </IconButton>
+                            <IconButton
+                            sx={{ color: 'rgba(255, 255, 255, 0.54)'}}
+                            aria-label={`info about ${collection.name}`}
+                            onClick={() => handleCollectionDetail(collection)}
+                            >
+                            <ArrowForward />
+                            </IconButton>
+                        </>
                       }
                 />
         </>

@@ -37,7 +37,7 @@ const circularStyle = {
     transform: 'translate(-50%, -50%)'
   }
 
-const AnimeList: React.FC = () => {
+const AnimeList: React.FC = (props: AnimeListResponse) => {
     const [currentPage, setCurrentPage] = useState(1)
     const [open, setOpen] = useState(false)
     const [id, setId] = useState(1)

@@ -78,7 +78,6 @@ const AnimeDetail = (props:AnimeDetailProps) => {
             message += "\n"
         })
         setMessage(message)
-        console.log(collections)
     }
 
     const onButtonAddCollection = () => {

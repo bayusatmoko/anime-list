@@ -55,8 +55,16 @@ export const CollectionProvider = (props: CollectionProviderProps) => {
         return `${collectionName} collection succesfully removed`
     }
 
+    const removeItemFromCollection = (id: number, collectionName: string) => {
+        const newCollection = [...collections]
+        const animeIndex = newCollection.find((col) => col.name === collectionName).animes.findIndex((anime) => anime.id === id)
+        newCollection.find((col) => col.name === collectionName).animes.splice(animeIndex,1)
+        setCollections(newCollection)
+        return `anime successfully removed from ${collectionName} collection`
+    }
+
     return (
-        <CollectionContext.Provider value={{collections, addCollection, addToCollection, deleteCollection}}>
+        <CollectionContext.Provider value={{collections, addCollection, addToCollection, deleteCollection, removeItemFromCollection}}>
             {props.children}
         </CollectionContext.Provider>
     )
