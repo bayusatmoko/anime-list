@@ -76,7 +76,7 @@ const CollectionDetail = (props: CollectionDetailProps) => {
                   </ImageListItem>
                 ))}
               </ImageList>
-            <Button onClick={props.handleCloseCollection}>Back to collection list</Button>
+            <Button onClick={props.handleCloseCollection}>Back</Button>
         </div>
         </>
     )

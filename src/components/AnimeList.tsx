@@ -8,6 +8,8 @@ import './AnimeList.scss'
 
 import ImageList from '@mui/material/ImageList';
 import AnimeDetail from "./AnimeDetail";
+import { Collection } from "@src/contexts/CollectionContext";
+import CollectionDetail from "./CollectionDetail";
 
 interface Anime {
     id: number;
@@ -41,9 +43,14 @@ const AnimeList: React.FC = (props: AnimeListResponse) => {
     const [currentPage, setCurrentPage] = useState(1)
     const [open, setOpen] = useState(false)
     const [id, setId] = useState(1)
+    const [collectionDetail, setCollectionDetail] = useState<Collection>({})
     const { data, error, loading } = useQuery<AnimeListResponse>(GET_ANIME_LIST, {
         variables: { page: currentPage, perPage: 10 }
     });
+
+    const handleOpenCollection = (collection: Collection) => {
+        setCollectionDetail(collection)
+    }
 
     const handleChange = (
         event: React.ChangeEvent<unknown>,
@@ -55,6 +62,10 @@ const AnimeList: React.FC = (props: AnimeListResponse) => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleCloseCollection = () => {
+        setCollectionDetail({})
+    }
 
     const handleBannerClick = (id: number) => {
         setId(id)
@@ -75,6 +86,10 @@ const AnimeList: React.FC = (props: AnimeListResponse) => {
         )
       }
 
+      if(collectionDetail.name) {
+        return <CollectionDetail collection={collectionDetail} handleCloseCollection={handleCloseCollection} />
+      }
+
     if(data) {
         return (
             <>
@@ -85,7 +100,7 @@ const AnimeList: React.FC = (props: AnimeListResponse) => {
                 aria-describedby="parent-modal-description"
             >
                 <>
-                <AnimeDetail id={id} onCloseModal={handleClose} />
+                <AnimeDetail id={id} onCloseModal={handleClose} handleOpenCollection={handleOpenCollection} />
                 </>
             </Modal>
             <ImageList className="imageList">

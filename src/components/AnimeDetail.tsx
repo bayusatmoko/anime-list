@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { useQuery } from '@apollo/client';
 import { GET_ANIME_DETAIL } from '@src/config/apolloQuery';
 import parse from 'html-react-parser'
-import { CollectionContext } from '@src/contexts/CollectionContext';
+import { Collection, CollectionContext } from '@src/contexts/CollectionContext';
 import { Alert, Checkbox, CircularProgress, FormControl, FormControlLabel, FormGroup, FormLabel, Link, Radio, RadioGroup, TextField } from '@mui/material';
 
 const style = {
@@ -37,6 +37,7 @@ const style = {
   interface AnimeDetailProps{
     id: number,
     onCloseModal: () => void
+    handleOpenCollection: (collection: Collection) => void
   }
 
   interface AnimeDetail {
@@ -167,7 +168,7 @@ const AnimeDetail = (props:AnimeDetailProps) => {
                                   <Link
                                     onClick={(e) => {
                                       e.preventDefault();
-                                      alert("TODO: navigate to collection detail by collection name "+collection.name);
+                                      props.handleOpenCollection(collection)
                                     }}
                                   >
                                     {collection.name}
