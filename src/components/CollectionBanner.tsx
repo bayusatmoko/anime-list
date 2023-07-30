@@ -4,7 +4,6 @@ import './CollectionBanner.scss'
 import { Collection, CollectionContext } from "@src/contexts/CollectionContext";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton } from "@mui/material";
 import DeleteOutline from "@mui/icons-material/DeleteOutline";
-import ArrowForward from "@mui/icons-material/ArrowForward"
 
 interface CollectionBannerProps {
     collection: Collection;
@@ -33,6 +32,7 @@ const CollectionBanner = (props:CollectionBannerProps) => {
 
     return (
         <>
+                // TODO Refactor all dialog to be reusable
                 <Dialog
                     open={open}
                     onClose={handleClose}

@@ -1,9 +1,10 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, ImageList, ImageListItem, Modal, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, ImageList, ImageListItem, Modal, Typography } from "@mui/material";
 import { Collection, CollectionContext } from "@src/contexts/CollectionContext";
 import React, { useContext, useState } from "react";
 import AnimeBanner from "./AnimeBanner";
 import { useQuery } from "@apollo/client";
 import AnimeDetail from "./AnimeDetail";
+import Edit from "@mui/icons-material/Edit"
 
 interface CollectionDetailProps {
     collection: Collection;
@@ -67,11 +68,12 @@ const CollectionDetail = (props: CollectionDetailProps) => {
 
     return (
         <>
-            <Typography variant="h6" component="h2" ml={1} mt={2}>
-                {props.collection.name} Collection
-                <Button onClick={props.handleCloseCollection}>Edit</Button>
+            <Typography variant="h6" component="h6" ml={1} mt={2}>
+                {props.collection.name} collection
+                <IconButton onClick={props.handleCloseCollection}><Edit /></IconButton>
             </Typography>
         <div>
+            // TODO Refactor all dialog to be reusable
                 <Dialog
                     open={openDeleteDialog}
                     onClose={handleCloseDeleteDialog}
