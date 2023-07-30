@@ -70,7 +70,6 @@ const CollectionDetail = (props: CollectionDetailProps) => {
         <>
             <Typography variant="h6" component="h6" ml={1} mt={2}>
                 {props.collection.name} collection
-                <IconButton onClick={props.handleCloseCollection}><Edit /></IconButton>
             </Typography>
         <div>
             {/* TODO Refactor all dialog to be reusable */}
