@@ -73,7 +73,7 @@ const CollectionDetail = (props: CollectionDetailProps) => {
                 <IconButton onClick={props.handleCloseCollection}><Edit /></IconButton>
             </Typography>
         <div>
-            // TODO Refactor all dialog to be reusable
+            {/* TODO Refactor all dialog to be reusable */}
                 <Dialog
                     open={openDeleteDialog}
                     onClose={handleCloseDeleteDialog}

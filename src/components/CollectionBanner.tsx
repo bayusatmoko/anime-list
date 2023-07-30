@@ -32,7 +32,7 @@ const CollectionBanner = (props:CollectionBannerProps) => {
 
     return (
         <>
-                // TODO Refactor all dialog to be reusable
+                {/* // TODO Refactor all dialog to be reusable */}
                 <Dialog
                     open={open}
                     onClose={handleClose}
