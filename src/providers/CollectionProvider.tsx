@@ -33,7 +33,8 @@ export const CollectionProvider = (props: CollectionProviderProps) => {
     }
 
     const addCollection = (collectionName: string): string => {
-        const collectionIndex = collections.findIndex((collection) => collection.name === collectionName)
+        if(!/^[a-zA-Z0-9]{4,10}$/.test(collectionName)) return "Collection name cannot contain special character"
+        const collectionIndex = collections.findIndex((collection) => collection.name.toLowerCase() === collectionName.toLowerCase())
         if(collectionIndex >= 0) {
             return `${collectionName} collection already exists` 
         }

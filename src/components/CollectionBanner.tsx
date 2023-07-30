@@ -59,12 +59,12 @@ const CollectionBanner = (props:CollectionBannerProps) => {
                     srcSet={`${collection.animes[0]?collection.animes[0].bannerImage:"https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg"}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={collection.name}
                     loading="lazy"
+                    onClick={() => handleCollectionDetail(collection)}
                 />
                 <ImageListItemBar
                     title={collection.name}
                     sx={{height: '40%'}}
                     actionIcon={
-                        <>
                             <IconButton
                             sx={{ color: 'rgba(255, 255, 255, 0.54)'}}
                             aria-label={`info about ${collection.name}`}
@@ -72,14 +72,6 @@ const CollectionBanner = (props:CollectionBannerProps) => {
                             >
                             <DeleteOutline />
                             </IconButton>
-                            <IconButton
-                            sx={{ color: 'rgba(255, 255, 255, 0.54)'}}
-                            aria-label={`info about ${collection.name}`}
-                            onClick={() => handleCollectionDetail(collection)}
-                            >
-                            <ArrowForward />
-                            </IconButton>
-                        </>
                       }
                 />
         </>

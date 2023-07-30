@@ -52,6 +52,10 @@ const AnimeList: React.FC = (props: AnimeListResponse) => {
         setCollectionDetail(collection)
     }
 
+    const handleCloseCollection = () => {
+        setCollectionDetail({})
+    }
+
     const handleChange = (
         event: React.ChangeEvent<unknown>,
         pageCurrent: number
@@ -62,10 +66,6 @@ const AnimeList: React.FC = (props: AnimeListResponse) => {
     const handleClose = () => {
         setOpen(false);
     };
-
-    const handleCloseCollection = () => {
-        setCollectionDetail({})
-    }
 
     const handleBannerClick = (id: number) => {
         setId(id)
@@ -97,11 +97,8 @@ const AnimeList: React.FC = (props: AnimeListResponse) => {
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="parent-modal-title"
-                aria-describedby="parent-modal-description"
-            >
-                <>
+                aria-describedby="parent-modal-description">
                 <AnimeDetail id={id} onCloseModal={handleClose} handleOpenCollection={handleOpenCollection} />
-                </>
             </Modal>
             <ImageList className="imageList">
                 {data.Page.media.map((item) => (

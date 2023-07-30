@@ -149,7 +149,7 @@ const AnimeDetail = (props:AnimeDetailProps) => {
             {showCollection && (
                 <>
                     <TextField sx={{marginLeft: 2, width: "70%"}} id="outlined-basic" label="Add new collection.." variant="outlined" onChange={() => setNewCollectionName((event.target as HTMLInputElement).value)} value={newCollectionName} />
-                    <Button size='small' onClick={() => addCollection(newCollectionName)}>Add</Button>
+                    <Button size='small' onClick={() => setMessage(addCollection(newCollectionName))}>Add</Button>
                 </>
             )}
             <br />

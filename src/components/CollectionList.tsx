@@ -3,7 +3,6 @@ import React, { useContext, useState } from "react";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import CollectionBanner from "./CollectionBanner";
-import './CollectionList.scss'
 import { Alert, Button } from "@mui/material";
 import PlusOne from '@mui/icons-material/PlusOne'
 import TextField from '@mui/material/TextField';
