@@ -101,7 +101,7 @@ const CollectionDetail = (props: CollectionDetailProps) => {
                 aria-describedby="parent-modal-description">
                 <AnimeDetail id={id} onCloseModal={handleClose} handleOpenCollection={handleOpenCollection} />
             </Modal>
-            <ImageList sx={{ height: '100%' }}>
+            <ImageList>
                 {props.collection.animes.map((anime) => (
                   <ImageListItem key={anime.title.userPreferred}>
                     <AnimeBanner 

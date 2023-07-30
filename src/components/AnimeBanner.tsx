@@ -18,13 +18,13 @@ const AnimeBanner = (props:AnimeBannerProps) => {
         <div>
                 <img
                     src={`${props.bannerImage?props.bannerImage:"https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg"}?w=248&fit=crop&auto=format`}
-                    srcSet={`${props.bannerImage?props.bannerImage:"https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg"}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    srcSet={`${props.bannerImage?props.bannerImage:"https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600w-1037719192.jpg"}?w=248&fit=crop&auto=format&dpr=2 4x`}
                     alt={props.title}
                     loading="lazy"
                     onClick={props.handleBannerClick}
                 />
                 <ImageListItemBar
-                    sx={{height: '40%'}}
+                    sx={{height: '10vw'}}
                     title={props.title? props.title: "No title"}
                     subtitle={props.genres && (<span>Genre: {props.genres.join(", ")}</span>)}
                     actionIcon={ props.handleDelete && (

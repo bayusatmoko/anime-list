@@ -100,7 +100,7 @@ const AnimeList: React.FC = (props: AnimeListResponse) => {
                 aria-describedby="parent-modal-description">
                 <AnimeDetail id={id} onCloseModal={handleClose} handleOpenCollection={handleOpenCollection} />
             </Modal>
-            <ImageList className="imageList">
+            <ImageList>
                 {data.Page.media.map((item) => (
                     <ImageListItem key={item.id} onClick={() => handleBannerClick(item.id)} >
                         <AnimeBanner title={item.title.userPreferred} bannerImage={item.bannerImage? item.bannerImage: item.coverImage.extraLarge} genres={item.genres} />

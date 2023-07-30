@@ -68,7 +68,7 @@ const CollectionList = () => {
                   <Button onClick={onConfirmAdd}>Add</Button>
                 </DialogActions>
               </Dialog>
-              <Button variant="outlined" onClick={handleClickOpen} endIcon={<PlusOne />}>
+              <Button sx={{marginTop: 2}} variant="outlined" onClick={handleClickOpen} endIcon={<PlusOne />}>
                 Add new collection
               </Button>
               {message !== "" && (
@@ -76,7 +76,7 @@ const CollectionList = () => {
                             {message}
                         </Alert>
                 )}
-              <ImageList sx={{ height: '100%' }}>
+              <ImageList>
                 {collections.map((item) => (
                   <ImageListItem key={item.name}>
                     <CollectionBanner collection={item} handleCollectionDetail={handleCollectionDetail} />
