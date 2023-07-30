@@ -65,8 +65,8 @@ const CollectionList = () => {
                   />
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={onConfirmAdd}>Add</Button>
                   <Button onClick={handleClose}>Close</Button>
+                  <Button onClick={onConfirmAdd}>Add</Button>
                 </DialogActions>
               </Dialog>
               <Button variant="outlined" onClick={handleClickOpen} endIcon={<PlusOne />}>
